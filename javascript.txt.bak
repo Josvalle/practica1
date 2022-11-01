@@ -1,0 +1,37 @@
+npm init <-- para crear el package.json en el folder 
+
+https://developer.mozilla.org/en-US/
+
+https://drive.google.com/drive/folders/1kqO9mHLuQdl7yZRqBohguyErkEjSXDl3
+
+
+
+variable = continie datos que pueden cambiar 
+cons = continie datos que no se pueden cambiar 
+
+javascript como python todos son objectos 
+
+       
+var = es global 
+
+let = let depende del contexto / scope
+
+cons = 
+
+hoisting = mueve decraraciones en el top del script 
+
+mutable = 
+
+inmutable =
+
+/*
+
+todo lo que este en el medio se va a comentar 
+*/
+
+
+funciones de los strings 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+expresiones regulares js = tarea 
+

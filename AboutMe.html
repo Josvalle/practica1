@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>About me</title>
+    <style>
+        h1{
+            color: blue;
+            font-size: 2em;
+        }
+
+        .listitem{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>About me </h1>
+
+    <ul>
+        <li>Nickname: <span id="nickname"></span></li>
+        <li>Favorites: <span id="favorites"></span></li>
+        <li>Hometown: <span id="hometown"></span></li>
+    </ul>
+
+    <script>
+        document.body.style.fontFamily = 'Arial, sans-serif';
+        document.getElementById('nickname').innerHTML = 'Josue Valle';
+        document.getElementById('favorites').innerHTML = '26'
+        document.getElementById('hometown').innerHTML = 'Tibas, San Jose'
+
+        var items = document.getElementsByTagName('li');
+
+        for (var i = 0; i < items.length; i++){
+            items[i].className = 'listitem'
+        }
+
+        var mypic = document.createElement('img');
+        mypic.src = 'https://imgs.search.brave.com/CnsAqq6D7ckbvlTxzmkI46YE4zqSXY2SYmPY-1BPeFk/rs:fit:1080:1200:1/g:ce/aHR0cHM6Ly93d3cu/c29sb2ZvbmRvcy5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDIvYzQ2N2Ux/ZjMxMDQ3NmE5YTQw/MzNlYzA5MzE5MmI4/NGMuanBn'
+        mypic.style.width = "10em";
+        mypic.style.height = "11.5em"
+        document.body.appendChild(mypic)
+
+
+    </script>
+</body>
+</html>

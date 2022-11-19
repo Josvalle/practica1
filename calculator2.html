@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  
+    <title>Calculator</title>
+    
+  </head>
+  <body>
+    <main id="main">
+      <form id="calc_form">
+        <header>
+          <input
+            type="text"
+            disabled
+            id="output"
+            value="0"
+          />
+        </header>
+        <footer>
+          <div>
+            <button
+              data-type="clear"
+              type="reset"
+              value="clear"
+            >
+              AC
+            </button>
+            <button data-type="operator" value="invert">
+              +/-
+            </button>
+            <button data-type="operator" value="%">
+              %
+            </button>
+            <button data-type="operator" value="/">
+              ÷
+            </button>
+          </div>
+          <div>
+            <button
+              data-type="operand"
+              value="7"
+              id="7"
+            >
+              7
+            </button>
+            <button data-type="operand" value="8">
+              8
+            </button>
+            <button data-type="operand" value="9">
+              9
+            </button>
+            <button data-type="operator" value="*">
+              x
+            </button>
+          </div>
+          <div>
+            <button data-type="operand" value="4">
+              4
+            </button>
+            <button data-type="operand" value="5">
+              5
+            </button>
+            <button data-type="operand" value="6">
+              6
+            </button>
+            <button data-type="operator" value="-">
+              -
+            </button>
+          </div>
+          <div>
+            <button data-type="operand" value="1">
+              1
+            </button>
+            <button data-type="operand" value="2">
+              2
+            </button>
+            <button data-type="operand" value="3">
+              3
+            </button>
+            <button data-type="operator" value="+">
+              +
+            </button>
+          </div>
+          <div>
+            <button
+              data-type="operand"
+              value="0"
+            >
+              0
+            </button>
+            <button data-type="operand" value=".">
+              .
+            </button>
+            <button value="=" data-type="operator">
+              =
+            </button>
+          </div>
+        </footer>
+      </form>
+    </main>
+
+    <script>
+
+        
+const output = document.getElementById("output");
+const form = document.getElementById("calc_form");
+const operand_btns = document.querySelectorAll("button[data-type=operand]");
+const operator_btns = document.querySelectorAll("button[data-type=operator]");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+let is_operator = false;
+let equation = [];
+
+const remove_active = () => {
+  operator_btns.forEach((btn) => {
+  });
+};
+operand_btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    if (output.value == "0") {
+      output.value = e.target.value;
+    } else if (output.value.includes(".")) {
+      output.value = output.value + "" + e.target.value.replace(".", "");
+    } 
+    else if (is_operator) {
+      is_operator = false;
+      output.value = e.target.value;
+    } else {
+      output.value = output.value + "" + e.target.value;
+    }  });
+});
+operator_btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    switch (e.target.value) {
+      case "%":
+        output.value = parseFloat(output.value) / 100;
+        break;
+      case "invert":
+        output.value = parseFloat(output.value) * -1;
+        break;
+      case "=":
+        equation.push(output.value);
+        output.value = eval(equation.join(""));
+        equation = [];
+        break;
+        
+      default:
+        let last_item = equation[equation.length - 1];
+        
+        if (["/", "*", "+", "-"].includes(last_item) && is_operator) {
+          equation.pop();
+          equation.push(e.target.value);
+        } else { 
+          equation.push(output.value);
+          equation.push(e.target.value);
+        }
+        is_operator = true;
+        break;
+    }
+  });
+});
+
+    </script>
+  </body>
+</html>

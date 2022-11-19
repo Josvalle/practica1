@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Input Validator</title>
+    <style>
+        button{
+            color: blue;
+            background-color: black;
+        }
+        input{
+            border-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="output"> What is your name?</div>
+    <input type="text" name="userName" placeholder="Please enter your name">
+    <button>Submit</button>
+
+    <script>
+        const output = document.querySelector('.output');
+        const userValue = document.querySelector('input[name="userName"]');
+        const btn = document.querySelector('button');
+        btn.onclick = () => {
+            if(userValue.value.length > 3){
+                const message = `hello ${userValue.value}`;
+                output.textContent = message;
+                userValue.style.display = 'none';
+                btn.style.display = 'none';
+            }
+            else{
+                output.textContent = 'The input you enter is invalid, please enter a output with more than three characters';
+                userValue.style.borderColor = 'red'
+                //alert('Please refresh and retry')  
+            }
+
+        }
+    </script>
+</body>
+</html>
